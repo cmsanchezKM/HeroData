@@ -5,9 +5,11 @@ import { HeroesComponent } from './heroes.component';
 import { HeroesRoutingModule } from './heroes-routing.modules';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
-import { BrowserModule } from '@angular/platform-browser';
 import { HeroTableComponent } from './components/hero-table/hero-table.component';
+import { HeroService } from './services/hero.service';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,10 +20,11 @@ import { HeroTableComponent } from './components/hero-table/hero-table.component
   imports: [
     CommonModule,
     HeroesRoutingModule,
-    BrowserModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
-  ]
+    MatSortModule,
+    MatIconModule
+  ],
+  providers: [provideHttpClient(), HeroService]
 })
 export class HeroesModule { }

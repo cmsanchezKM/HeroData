@@ -1,1 +1,7 @@
-<app-hero-table [heroes]="heroes$ | async"></app-hero-table>
+<div *ngIf="heroes$ | async as heroes; else loading">
+  <app-hero-table [heroes]="heroes"></app-hero-table>
+</div>
+
+<ng-template #loading>
+  <p>Cargando héroes...</p>
+</ng-template>

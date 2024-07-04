@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Hero } from '../../model/hero.interface';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-hero-table',
@@ -8,7 +8,15 @@ import { Hero } from '../../model/hero.interface';
   styleUrl: './hero-table.component.scss'
 })
 export class HeroTableComponent {
-  @Input() heroes!: Hero[];
+  @Input() heroes: Hero[] = [];
 
-  displayedColumns: string[] = ['name', 'edit', 'delete'];
+  displayedColumns: string[] = ['name', 'actions',];
+  dataSource = new MatTableDataSource<Hero>();
+
+  editHero(element: Hero) {
+    console.log('editHero', element);
+  }
+  deleteHero(element: Hero) {
+    console.log('deleteHero', element);
+  }
 }
