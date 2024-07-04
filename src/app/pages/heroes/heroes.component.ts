@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { Hero } from './model/hero.interface';
+import { Observable } from 'rxjs/internal/Observable';
+import { HeroService } from './services/hero.service';
 
 @Component({
   selector: 'app-heros',
@@ -6,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './heroes.component.scss'
 })
 export class HeroesComponent implements OnInit {
-  ngOnInit(): void {
+  heroes$: any;
+  constructor(private heroService: HeroService){}
 
+  ngOnInit(): void {
+    this.heroes$ = this.heroService.getHeroes();
   }
 }
